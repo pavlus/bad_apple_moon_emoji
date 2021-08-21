@@ -1,3 +1,4 @@
+:experimental:
 ifdef::env-github[]
 image:https://img.youtube.com/vi/M3q63QNwKz4/maxresdefault.jpg[link=https://youtu.be/M3q63QNwKz4]
 endif::[]
@@ -5,7 +6,6 @@ endif::[]
 ifndef::env-github[]
 video::M3q63QNwKz4[youtube, width=640, height=480]
 endif::[]
-
 
 == Bad Apple: Moon Phase Emoji edition
 
@@ -35,7 +35,7 @@ And that's how idea was born.
 
 === Installation
 . Install link:https://processing.org/download[Processing 3]
-. Open the `bad_apple_emoji.pde` file in *Processing 3* and press ▶ button (or kbd:[Ctrl+R] )
+. Open the `bad_apple_emoji.pde` file in *Processing 3* and press btn:[▶] button (or kbd:[Ctrl+R])
 . Change it! You can play around with output size, tile size, select one of
 two available emoji themes, or get creative and write some more code!
 
