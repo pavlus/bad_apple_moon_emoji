@@ -15,12 +15,12 @@ static final int BW_THRESHOLD = 127;
 static final color BG_COLOR = 67;
 static final int TILE_WIDTH = 24, TILE_HEIGHT = 24;
 //static final int TILE_WIDTH = 8, TILE_HEIGHT = 8;
-static final String THEME = "twi";
+static final String THEME = "emojione";
 //static final String THEME = "noto";
 
 static final boolean START_IMMEDIATELY = true;
 
-static final boolean DUMP_FRAMES = true;
+static final boolean DUMP_FRAMES = false;
 static final boolean DEBUG = false;
 void settings() {
   size(960, 720);
@@ -46,8 +46,8 @@ PImage[] hashToTile = new PImage[16];
 int xSize, ySize;
 int tileWidth, tileHeight;
 
-PGraphics[] buff = new PGraphics[2];
-Object lock = new Object();
+final PGraphics[] buff = new PGraphics[2];
+
 volatile boolean started = false;
 
 void setup() {
@@ -84,7 +84,7 @@ void setup() {
 
 void draw() {
   if (!started) return;
-  synchronized(lock) {
+  synchronized(buff) {
     image(buff[1], 0, 0);
     if (DUMP_FRAMES) saveFrame("frames/####.tiff");
   }
@@ -114,7 +114,7 @@ void movieEvent(Movie m) {
     buf.image(hashToTile[hash], i / xStep * tileWidth, j / yStep * tileHeight);
   }
   buf.endDraw();
-  synchronized(lock) {
+  synchronized(buff) {
     PGraphics tmp = buff[1];
     buff[1] = buff[0];
     buff[0] = tmp;
