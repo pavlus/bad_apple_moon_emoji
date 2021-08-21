@@ -1,0 +1,44 @@
+video::M3q63QNwKz4[youtube, width=640, height=480]
+
+== Bad Apple: Moon Phase Emoji edition
+
+Once I've opened Telegram and seen this:
+
+----
+🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕
+🌕🌕🌘🌑🌓🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕
+🌕🌕🌑🌕🌕🌕🌗🌑🌑🌑🌕🌕🌕🌕🌕
+🌕🌕🌑🌕🌕🌖🌑👁🌑👁🌔🌗🌑🌕🌕
+🌕🌕🌘🌓🌕🌑🌑🌑🌑🌑🌔🌕🌘🌔🌕
+🌕🌕🌗🌑🌘🌑🌑🌑🌑🌑🌕🌖🌑🌕🌕
+🌕🌕🌕🌘🌑🌑🌑🌑🌑🌕🌖🌑🌔🌕🌕
+🌕🌕🌕🌖🌑🌑🌑🌑🌑🌑🌑🌔🌕🌕🌕
+🌕🌕🌕🌗🌑🌑🌑🌑🌑🌑🌕🌕🌕🌕🌕
+🌕🌕🌕🌘🌑🌕🌕🌘🌑🌔🌕🌕🌕🌕🌕
+🌕🌕🌕🌑🌓🌕🌕🌗🌑🌕🌕🌕🌕🌕🌕
+🌕🌕🌖🌑🌔🌕🌕🌖🌑🌔🌕🌕🌕🌕🌕
+🌕🌕🌗🌑🌕🌕🌕🌕🌑🌑🌕🌕🌕🌕🌕
+🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕
+----
+
+(thank you, link:https://github.com/folex[@folex])
+
+And that's how idea was born.
+
+
+=== Installation
+. Install link:https://processing.org/download[Processing 3]
+. Open the `bad_apple_emoji.pde` file in *Processing 3* and press ▶ button (or kbd:[Ctrl+R] )
+. Change it! You can play around with output size, tile size, select one of
+two available emoji themes, or get creative and write some more code!
+
+=== How it works
+. Split frame into tiles. Each tile will have a single emoji.
+. For each tile:
+[arabic]
+.. Split tiles horizontally into 4 vertical regions.
+.. Average each region color, calculate it's brightness, and check if it crosses threshold.
+.. Calculate _perceptual hash_ of the tile: set corresponding to the region bits in range 0:3 to 1 if the region is brighter than the defined threshold and 0 if it's darker.
+.. Lookup image from table that matches such hash (table constructed manually, with approximations)
+.. Draw corresponding image at the current tile.
+
